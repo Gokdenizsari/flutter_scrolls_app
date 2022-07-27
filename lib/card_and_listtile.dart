@@ -10,13 +10,26 @@ class CardAndListtile extends StatelessWidget {
         title: Text("CardAndListtile"),
       ),
       body: Center(
-        child: Column(
+        /*child: SingleChildScrollView()*/
+        child: ListView(
+          reverse: true,
           children: [
-            tekListe(),
-            tekListe(),
-            tekListe(),
-            tekListe(),
-            tekListe(),
+            Column(
+              children: [
+                tekListe(),
+                tekListe(),
+                tekListe(),
+                tekListe(),
+                tekListe(),
+                tekListe(),
+                tekListe(),
+                tekListe(),
+                tekListe(),
+                tekListe(),
+              ],
+            ),
+            Text("Konular"),
+            ElevatedButton(onPressed: () {}, child: Text("Tıkla"))
           ],
         ),
       ),
