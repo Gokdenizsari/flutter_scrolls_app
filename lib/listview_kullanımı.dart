@@ -14,15 +14,22 @@ class ListViewKullanimi extends StatelessWidget {
       appBar: AppBar(
         title: Text("Ülke Listesi"),
       ),
-      body: ListView(
-        children: TumUlkeler.map((Ulke ulk) => ListTile(
-              title: Text(ulk.Ulkeadi),
-              subtitle: Text(ulk.Baskent),
-              leading: CircleAvatar(
-                child: Text(ulk.id.toString()),
-              ),
-            )).toList(),
-      ),
+      body: ListView.builder(itemBuilder: (BuildContext context, int index) {
+        var oankiUlke = TumUlkeler[index];
+        return ListTile(
+          title: Text(oankiUlke.Ulkeadi),
+          subtitle: Text(oankiUlke.Baskent),
+          leading: CircleAvatar(
+            child: Text(oankiUlke.id.toString()),
+          ),
+        );
+      }),
+    );
+  }
+
+  ListView klasikListView() {
+    return ListView(
+      children: TumUlkeler.map((Ulke ulk) => ListTile()).toList(),
     );
   }
 }
