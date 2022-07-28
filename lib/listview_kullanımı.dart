@@ -14,16 +14,36 @@ class ListViewKullanimi extends StatelessWidget {
       appBar: AppBar(
         title: Text("Ülke Listesi"),
       ),
-      body: ListView.builder(itemBuilder: (BuildContext context, int index) {
-        var oankiUlke = TumUlkeler[index];
-        return ListTile(
-          title: Text(oankiUlke.Ulkeadi),
-          subtitle: Text(oankiUlke.Baskent),
-          leading: CircleAvatar(
-            child: Text(oankiUlke.id.toString()),
-          ),
-        );
-      }),
+      body: ListView.separated /*builder*/ (
+          itemBuilder: (BuildContext context, int index) {
+            var oankiUlke = TumUlkeler[index];
+            return Card(
+                color: index % 2 == 0
+                    ? Colors.purple.shade300
+                    : Colors.orange.shade200,
+                child: ListTile(
+                  onTap: () {
+                    print("Tıklandı ${index}");
+                  },
+                  title: Text(oankiUlke.Ulkeadi),
+                  subtitle: Text(oankiUlke.Baskent),
+                  leading: CircleAvatar(
+                    child: Text(oankiUlke.id.toString()),
+                  ),
+                ));
+          },
+          itemCount: TumUlkeler.length,
+          separatorBuilder: (context, index) {
+            var yeniIndex = index + 1;
+            if (yeniIndex % 4 == 0) {
+              return Divider(
+                thickness: 2,
+                color: Colors.red.shade600,
+              );
+            }
+
+            return SizedBox();
+          }),
     );
   }
 
