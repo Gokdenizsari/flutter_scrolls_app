@@ -5,7 +5,7 @@ class ListViewKullanimi extends StatelessWidget {
   ListViewKullanimi({Key? key}) : super(key: key);
 
   List<Ulke> TumUlkeler = List.generate(
-      100,
+      10,
       (index) => Ulke(
           index + 1, "Başkent ismi ${index + 1}", "Ülke Adı ${index + 1}"));
 
@@ -31,6 +31,9 @@ class ListViewKullanimi extends StatelessWidget {
                     } else {
                       EasyLoading.instance.backgroundColor = Colors.black;
                     }
+                  },
+                  onLongPress: () {
+                    _alertDialogIslemleri(context, TumUlkeler);
                   },
                   title: Text(oankiUlke.Ulkeadi),
                   subtitle: Text(oankiUlke.Baskent),
@@ -59,6 +62,39 @@ class ListViewKullanimi extends StatelessWidget {
       children: TumUlkeler.map((Ulke ulk) => ListTile()).toList(),
     );
   }
+
+  void _alertDialogIslemleri(BuildContext myContext, secilenUlke) {
+    showDialog(
+        barrierDismissible: false,
+        context: myContext,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(secilenUlke.toString()),
+            content: SingleChildScrollView(
+              child: ListBody(children: [
+                Text("Ülke a " * 2),
+                Text("ülke b " * 2),
+              ]),
+            ),
+            actions: [
+              ButtonBar(
+                children: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text("Tamam")),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text("Kapat"))
+                ],
+              )
+            ],
+          );
+        });
+  }
 }
 
 class Ulke {
@@ -67,4 +103,8 @@ class Ulke {
   final String Baskent;
 
   Ulke(this.id, this.Baskent, this.Ulkeadi);
+  @override
+  String toString() {
+    return "Ülke'nin adı $Ulkeadi, Başkenti $Baskent , Ülke sırası $id";
+  }
 }
