@@ -8,13 +8,28 @@ class GridViewKullanimi extends StatelessWidget {
     return GridView.builder(
       itemCount: 100,
       gridDelegate:
-          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemBuilder: (BuildContext context, int index) {
         return Container(
           alignment: Alignment.center,
-          color: Colors.green[100 * (index % 10)],
+          decoration: BoxDecoration(
+              color: Colors.red[100 * (index % 10)],
+              gradient: LinearGradient(colors: [Colors.orange, Colors.purple]),
+              border: Border.all(
+                color: Colors.teal,
+                width: 5,
+              ),
+              borderRadius: new BorderRadius.all(new Radius.circular(15)),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.blue.shade400,
+                    offset: Offset(10.0, 5.0),
+                    blurRadius: 15),
+              ]),
+          margin: EdgeInsets.all(20),
           child: Text(
-            "Hello Flutter 1",
+            "Hello ",
+            style: TextStyle(fontSize: 24, color: Colors.white),
             textAlign: TextAlign.center,
           ),
         );
