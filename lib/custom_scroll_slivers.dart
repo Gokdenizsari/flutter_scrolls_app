@@ -10,10 +10,45 @@ class CollapsableToolbar extends StatelessWidget {
         SliverAppBar(
           title: Text("Sliver Bar"),
           backgroundColor: Colors.orange.shade400,
-          expandedHeight: 150,
-          
+          expandedHeight: 200,
+          floating: true,
         ),
-        /* SliverList(),
+        SliverList(
+          delegate: SliverChildListDelegate([
+            Container(
+                height: 150,
+                color: Colors.purple,
+                alignment: Alignment.center,
+                child: Text(
+                  "Birinci Eleman",
+                  style: TextStyle(fontSize: 24, color: Colors.white),
+                )),
+            Container(
+                height: 150,
+                color: Colors.teal,
+                alignment: Alignment.centerRight,
+                child: Text("İkinci Eleman",
+                    style: TextStyle(fontSize: 24, color: Colors.white))),
+            Container(
+                height: 150,
+                color: Colors.red,
+                alignment: Alignment.centerLeft,
+                child: Text("Üçüncü Eleman",
+                    style: TextStyle(fontSize: 24, color: Colors.white))),
+            Container(
+                height: 150,
+                color: Colors.blue,
+                alignment: Alignment.centerRight,
+                child: Text("Dördüncü Eleman",
+                    style: TextStyle(fontSize: 24, color: Colors.white))),
+            Container(
+                height: 150,
+                color: Colors.green,
+                alignment: Alignment.centerLeft,
+                child: Text("Beşinci Eleman",
+                    style: TextStyle(fontSize: 24, color: Colors.white))),
+          ]),
+        ), /*
         SliverFixedExtentList(),
         SliverGrid(),
         SliverGrid.count(crossAxisCount: 2),
