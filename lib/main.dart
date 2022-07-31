@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_scrolls_app/card_and_listtile.dart';
+import 'package:flutter_scrolls_app/custom_scroll_slivers.dart';
 import 'package:flutter_scrolls_app/gridview.dart';
 import 'package:flutter_scrolls_app/listview_kullan%C4%B1m%C4%B1.dart';
 import 'package:flutter_scrolls_app/listview_layout.dart';
@@ -32,9 +33,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      home: GridViewKullanimi(
-        
-      ),
+      theme:
+          ThemeData(primarySwatch: Colors.purple, 
+          /*brightness: Brightness.dark*/),
+      home: CollapsableToolbar(),
       builder: EasyLoading.init(),
     );
   }
