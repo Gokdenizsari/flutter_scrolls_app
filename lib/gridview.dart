@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class GridViewKullanimi extends StatelessWidget {
@@ -10,28 +12,44 @@ class GridViewKullanimi extends StatelessWidget {
       gridDelegate:
           SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemBuilder: (BuildContext context, int index) {
-        return Container(
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              color: Colors.red[100 * (index % 10)],
-              gradient: LinearGradient(colors: [Colors.orange, Colors.purple]),
-              border: Border.all(
-                color: Colors.teal,
-                width: 5,
-              ),
-              borderRadius: new BorderRadius.all(new Radius.circular(15)),
+        return GestureDetector(
+          child: Container(
+            alignment: Alignment.bottomCenter,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.teal.shade400, width: 15),
+              //borderRadius: new BorderRadius.all(new Radius.circular(10.0)),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.blue.shade400,
-                    offset: Offset(10.0, 5.0),
-                    blurRadius: 15),
-              ]),
-          margin: EdgeInsets.all(20),
-          child: Text(
-            "Hello ",
-            style: TextStyle(fontSize: 24, color: Colors.white),
-            textAlign: TextAlign.center,
+                  color: Colors.purple.shade400,
+                  offset: Offset(7.0, 5.0),
+                  blurRadius: 15.0,
+                )
+              ],
+              shape: BoxShape.circle,
+              color: Colors.orange[100 * ((index + 1)) % 9],
+              gradient: LinearGradient(
+                colors: [Colors.purple, Colors.yellow],
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+              ),
+              /* image: DecorationImage(
+                  image: AssetImage("assets/images/Relay.jpg"),
+                  fit: BoxFit.contain,
+                  alignment: Alignment.topCenter)*/
+            ),
+            margin: EdgeInsets.all(15),
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Text(
+                "Hi flutter $index",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 48, color: Colors.white),
+              ),
+            ),
           ),
+          onTap: () => debugPrint("Hi flutter $index tek tıklandı."),
+          onDoubleTap: () => debugPrint("Hi flutter $index çift tıklandı."),
+          onLongPress: () => debugPrint("Hi flutter $index uzun süre tıklandı."),
         );
       },
     );
