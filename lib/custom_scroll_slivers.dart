@@ -19,84 +19,23 @@ class CollapsableToolbar extends StatelessWidget {
           ),
         ),
         SliverList(
-          delegate: SliverChildListDelegate([
-            Container(
-                height: 100,
-                color: Colors.purple,
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Birinci Eleman",
-                  style: TextStyle(fontSize: 24, color: Colors.white),
-                )),
-            Container(
-                height: 100,
-                color: Colors.teal,
-                alignment: Alignment.centerLeft,
-                child: Text("İkinci Eleman",
-                    style: TextStyle(fontSize: 24, color: Colors.white))),
-            Container(
-                height: 100,
-                color: Colors.red,
-                alignment: Alignment.centerLeft,
-                child: Text("Üçüncü Eleman",
-                    style: TextStyle(fontSize: 24, color: Colors.white))),
-            Container(
-                height: 100,
-                color: Colors.blue,
-                alignment: Alignment.centerLeft,
-                child: Text("Dördüncü Eleman",
-                    style: TextStyle(fontSize: 24, color: Colors.white))),
-            Container(
-                height: 100,
-                color: Colors.green,
-                alignment: Alignment.centerLeft,
-                child: Text("Beşinci Eleman",
-                    style: TextStyle(fontSize: 24, color: Colors.white))),
-            Container(
-                height: 100,
-                color: Colors.lightBlueAccent,
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Altıncı Eleman",
-                  style: TextStyle(fontSize: 24, color: Colors.white),
-                )),
-            Container(
-                height: 100,
-                color: Colors.yellow.shade700,
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Yedinci Eleman",
-                  style: TextStyle(fontSize: 24, color: Colors.white),
-                )),
-            Container(
-                height: 100,
-                color: Colors.grey,
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Sekizinci Eleman",
-                  style: TextStyle(fontSize: 24, color: Colors.white),
-                )),
-            Container(
-                height: 100,
-                color: Color.fromARGB(66, 179, 38, 38),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Dokuzunca Eleman",
-                  style: TextStyle(fontSize: 24, color: Colors.white),
-                )),
-            Container(
-                height: 100,
-                color: Colors.cyan,
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Onuncu Eleman",
-                  style: TextStyle(fontSize: 24, color: Colors.white),
-                )),
-          ]),
+          delegate: SliverChildListDelegate(
+            sabitListeElemanlari(),
+          ),
         ),
+        SliverGrid(
+          delegate: SliverChildListDelegate(sabitListeElemanlari()),
+          gridDelegate:
+              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        ),
+        SliverGrid(
+            delegate: SliverChildBuilderDelegate(_dynamicEleman),
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 75)),
         SliverPadding(padding: EdgeInsets.all(10)),
         SliverList(
-            delegate: SliverChildBuilderDelegate(_dynamicEleman, childCount: 5))
+          delegate: SliverChildBuilderDelegate(_dynamicEleman, childCount: 5),
+        )
 
         /*
         SliverFixedExtentList(),
@@ -126,4 +65,81 @@ class CollapsableToolbar extends StatelessWidget {
       math.Random().nextInt(255),
     );
   }
+}
+
+List<Widget> sabitListeElemanlari() {
+  return [
+    Container(
+        height: 100,
+        color: Colors.purple,
+        alignment: Alignment.centerLeft,
+        child: Text(
+          "Birinci Eleman",
+          style: TextStyle(fontSize: 24, color: Colors.white),
+        )),
+    Container(
+        height: 100,
+        color: Colors.teal,
+        alignment: Alignment.centerLeft,
+        child: Text("İkinci Eleman",
+            style: TextStyle(fontSize: 24, color: Colors.white))),
+    Container(
+        height: 100,
+        color: Colors.red,
+        alignment: Alignment.centerLeft,
+        child: Text("Üçüncü Eleman",
+            style: TextStyle(fontSize: 24, color: Colors.white))),
+    Container(
+        height: 100,
+        color: Colors.blue,
+        alignment: Alignment.centerLeft,
+        child: Text("Dördüncü Eleman",
+            style: TextStyle(fontSize: 24, color: Colors.white))),
+    Container(
+        height: 100,
+        color: Colors.green,
+        alignment: Alignment.centerLeft,
+        child: Text("Beşinci Eleman",
+            style: TextStyle(fontSize: 24, color: Colors.white))),
+    Container(
+        height: 100,
+        color: Colors.lightBlueAccent,
+        alignment: Alignment.centerLeft,
+        child: Text(
+          "Altıncı Eleman",
+          style: TextStyle(fontSize: 24, color: Colors.white),
+        )),
+    Container(
+        height: 100,
+        color: Colors.yellow.shade700,
+        alignment: Alignment.centerLeft,
+        child: Text(
+          "Yedinci Eleman",
+          style: TextStyle(fontSize: 24, color: Colors.white),
+        )),
+    Container(
+        height: 100,
+        color: Colors.grey,
+        alignment: Alignment.centerLeft,
+        child: Text(
+          "Sekizinci Eleman",
+          style: TextStyle(fontSize: 24, color: Colors.white),
+        )),
+    Container(
+        height: 100,
+        color: Color.fromARGB(66, 179, 38, 38),
+        alignment: Alignment.centerLeft,
+        child: Text(
+          "Dokuzunca Eleman",
+          style: TextStyle(fontSize: 24, color: Colors.white),
+        )),
+    Container(
+        height: 100,
+        color: Colors.cyan,
+        alignment: Alignment.centerLeft,
+        child: Text(
+          "Onuncu Eleman",
+          style: TextStyle(fontSize: 24, color: Colors.white),
+        ))
+  ];
 }
